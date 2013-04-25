@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface KKViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *upView;
+@property (strong, nonatomic) IBOutlet UIView *downView;
+@property (nonatomic) BOOL staus;
+- (IBAction)close:(id)sender;
+- (IBAction)open:(id)sender;
 
 @end

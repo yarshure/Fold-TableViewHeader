@@ -18,6 +18,7 @@
 		69503E8D17292C120097DD69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69503E8C17292C120097DD69 /* Default-568h@2x.png */; };
 		69503E9017292C120097DD69 /* KKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69503E8F17292C120097DD69 /* KKViewController.m */; };
 		69503E9317292C120097DD69 /* KKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69503E9117292C120097DD69 /* KKViewController.xib */; };
+		69503E9A17292DF70097DD69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69503E9917292DF70097DD69 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		69503E8E17292C120097DD69 /* KKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKViewController.h; sourceTree = "<group>"; };
 		69503E8F17292C120097DD69 /* KKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKViewController.m; sourceTree = "<group>"; };
 		69503E9217292C120097DD69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KKViewController.xib; sourceTree = "<group>"; };
+		69503E9917292DF70097DD69 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69503E9A17292DF70097DD69 /* QuartzCore.framework in Frameworks */,
 				69503E7717292C120097DD69 /* UIKit.framework in Frameworks */,
 				69503E7917292C120097DD69 /* Foundation.framework in Frameworks */,
 				69503E7B17292C120097DD69 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +76,7 @@
 		69503E7517292C120097DD69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69503E9917292DF70097DD69 /* QuartzCore.framework */,
 				69503E7617292C120097DD69 /* UIKit.framework */,
 				69503E7817292C120097DD69 /* Foundation.framework */,
 				69503E7A17292C120097DD69 /* CoreGraphics.framework */,
