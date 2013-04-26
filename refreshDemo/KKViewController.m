@@ -11,15 +11,26 @@
 @interface KKViewController ()
 
 @end
-double radians(float degrees) {
-    return ( degrees * 3.14159265 ) / 180.0;
-}
+
 @implementation KKViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _staus = YES;
+   
+    
+    if (_refreshHeaderView == nil) {
+		
+		KKRefreshTableHeaderView *view = [[KKRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+		
+		
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -29,66 +40,107 @@ double radians(float degrees) {
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)close:(id)sender {
-    CALayer *downLayer = _downView.layer;
-    downLayer.anchorPoint= CGPointMake(0.5, 1);
-    CALayer *upLayer = _upView.layer;
-    upLayer.anchorPoint= CGPointMake(0.5, 0);
+
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
+}
+
+
+#pragma mark -
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 10;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat angle;
-    if (_staus) {
-        angle = 45;
-    }else{
-        angle = -45;
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
     }
-    [downLayer addAnimation:[self leafsAnimation:CGPointMake(_downView.center.x,_downView.center.y)
-                                       angle:angle
-                                          Animationname:@"wahaha"] forKey:@"position"];
     
-    [upLayer addAnimation:[self leafsAnimation:CGPointMake(_upView.center.x,_upView.center.y)
-                                           angle:-angle
-                                   Animationname:@"wahaha"] forKey:@"position"];
-   // downLayer.anchorPoint= CGPointMake(0.5, 0);
-//    _downView.center = CGPointMake(_downView.center.x,_downView.center.y-_downView.frame.size.height/2);
+	// Configure the cell.
+    
+    return cell;
 }
--(CAAnimation*)leafsAnimation:(CGPoint)fromPoint angle:(CGFloat)angel Animationname:(NSString *)name
-{
-    float t1=10;
-     
-    CAKeyframeAnimation *move0 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    CGMutablePathRef thePath0 = CGPathCreateMutable();
-	CGPathMoveToPoint(thePath0, NULL, fromPoint.x, fromPoint.y);
-	CGPathAddLineToPoint(thePath0, NULL, fromPoint.x, fromPoint.y);
-    
-	move0.duration=t1;
-	move0.path = thePath0;
-	CGPathRelease(thePath0);
-    
-    
-    CAKeyframeAnimation *move = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-	move.removedOnCompletion = YES;
-    move.beginTime = 0;
-	move.duration = t1;
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	
-    
-    
-    CATransform3D to=CATransform3DMakeRotation(radians(angel), 1, 0, 0);
-    to.m34 = 1/ 10.0;
-	move.values = [NSArray arrayWithObjects:
-                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(0), 0, 0, 0)],
-                   [NSValue valueWithCATransform3D:to],nil];
-    move.keyTimes = [NSArray arrayWithObjects:
-                     [NSNumber numberWithFloat:0.0],
-					 [NSNumber numberWithFloat:1.0],nil];
-    CAAnimationGroup *group = [CAAnimationGroup animation];
-	group.duration = t1;
-	group.delegate = self;
-	[group setValue:name forKey:@"name"];
-	//move.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	group.animations = [NSArray arrayWithObjects:move0,move,nil];
-	return group;
+	return [NSString stringWithFormat:@"Section %i", section];
+	
+}
+
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView kkRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+	
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView kkRefreshScrollViewDidScroll:scrollView];
     
 }
-- (IBAction)open:(id)sender {
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView kkRefreshScrollViewDidEndDragging:scrollView];
+	
 }
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)kkRefreshTableHeaderDidTriggerRefresh:(KKRefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)kkRefreshTableHeaderDataSourceIsLoading:(KKRefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)kkRefreshTableHeaderDataSourceLastUpdated:(KKRefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
+
+
+- (void)viewDidUnload {
+	_refreshHeaderView=nil;
+}
+
 @end

@@ -19,6 +19,7 @@
 		69503E9017292C120097DD69 /* KKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69503E8F17292C120097DD69 /* KKViewController.m */; };
 		69503E9317292C120097DD69 /* KKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69503E9117292C120097DD69 /* KKViewController.xib */; };
 		69503E9A17292DF70097DD69 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69503E9917292DF70097DD69 /* QuartzCore.framework */; };
+		69503E9D172A06200097DD69 /* KKRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69503E9C172A06200097DD69 /* KKRefreshTableHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		69503E8F17292C120097DD69 /* KKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKViewController.m; sourceTree = "<group>"; };
 		69503E9217292C120097DD69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KKViewController.xib; sourceTree = "<group>"; };
 		69503E9917292DF70097DD69 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		69503E9B172A06200097DD69 /* KKRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRefreshTableHeaderView.h; sourceTree = "<group>"; };
+		69503E9C172A06200097DD69 /* KKRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRefreshTableHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,8 @@
 		69503E6A17292C120097DD69 = {
 			isa = PBXGroup;
 			children = (
+				69503E9B172A06200097DD69 /* KKRefreshTableHeaderView.h */,
+				69503E9C172A06200097DD69 /* KKRefreshTableHeaderView.m */,
 				69503E7C17292C120097DD69 /* refreshDemo */,
 				69503E7517292C120097DD69 /* Frameworks */,
 				69503E7417292C120097DD69 /* Products */,
@@ -181,6 +186,7 @@
 				69503E8317292C120097DD69 /* main.m in Sources */,
 				69503E8717292C120097DD69 /* KKAppDelegate.m in Sources */,
 				69503E9017292C120097DD69 /* KKViewController.m in Sources */,
+				69503E9D172A06200097DD69 /* KKRefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

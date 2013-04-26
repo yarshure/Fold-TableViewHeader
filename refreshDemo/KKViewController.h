@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KKRefreshTableHeaderView.h"
+@interface KKViewController : UITableViewController <KKRefreshTableHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource>{
+	
+	KKRefreshTableHeaderView *_refreshHeaderView;
+	
+	//  Reloading var should really be your tableviews datasource
+	//  Putting it here for demo purposes
+	BOOL _reloading;
+}
 
-@interface KKViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIView *upView;
-@property (strong, nonatomic) IBOutlet UIView *downView;
-@property (nonatomic) BOOL staus;
-- (IBAction)close:(id)sender;
-- (IBAction)open:(id)sender;
-
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
 @end
