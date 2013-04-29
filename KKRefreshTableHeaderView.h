@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-
+#import "KKFlodView.h"
 typedef enum{
 	KKPullRefreshPulling = 0,
 	KKPullRefreshNormal,
@@ -26,9 +26,8 @@ typedef enum{
 	UILabel *_statusLabel;
 	CALayer *_arrowImage;
 	UIActivityIndicatorView *_activityView;
-	
-    UIView *upView;
-    UIView *downView;
+	KKFlodView *foldView;
+    
 }
 
 @property(nonatomic,weak) id <KKRefreshTableHeaderViewDelegate> delegate;

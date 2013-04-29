@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690FA581172E1B9100A5356A /* KKFlodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 690FA580172E1B9100A5356A /* KKFlodView.m */; };
 		69503E7717292C120097DD69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69503E7617292C120097DD69 /* UIKit.framework */; };
 		69503E7917292C120097DD69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69503E7817292C120097DD69 /* Foundation.framework */; };
 		69503E7B17292C120097DD69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69503E7A17292C120097DD69 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690FA57F172E1B9100A5356A /* KKFlodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFlodView.h; sourceTree = "<group>"; };
+		690FA580172E1B9100A5356A /* KKFlodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFlodView.m; sourceTree = "<group>"; };
 		69503E7317292C120097DD69 /* refreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = refreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69503E7617292C120097DD69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69503E7817292C120097DD69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +67,8 @@
 			children = (
 				69503E9B172A06200097DD69 /* KKRefreshTableHeaderView.h */,
 				69503E9C172A06200097DD69 /* KKRefreshTableHeaderView.m */,
+				690FA57F172E1B9100A5356A /* KKFlodView.h */,
+				690FA580172E1B9100A5356A /* KKFlodView.m */,
 				69503E7C17292C120097DD69 /* refreshDemo */,
 				69503E7517292C120097DD69 /* Frameworks */,
 				69503E7417292C120097DD69 /* Products */,
@@ -187,6 +192,7 @@
 				69503E8717292C120097DD69 /* KKAppDelegate.m in Sources */,
 				69503E9017292C120097DD69 /* KKViewController.m in Sources */,
 				69503E9D172A06200097DD69 /* KKRefreshTableHeaderView.m in Sources */,
+				690FA581172E1B9100A5356A /* KKFlodView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +315,7 @@
 				69503E9817292C120097DD69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
